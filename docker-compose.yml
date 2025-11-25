@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+ web:
+  build: .
+  ports:
+  - "8080:80"
+  container_name: servidor-web-compose
+  volumes:
+  - ./index.html:/usr/share/nginx/html/index.html:ro # Volumen en modo solo lectura (ro)
+  - ./default.conf:/etc/nginx/conf.d/default.conf:ro # Volumen en modo solo lectura (ro)
+  restart: always # Reinicia automaticamente si falla el contenedor
